@@ -1,17 +1,37 @@
-export default function Product() {
+import { useContext } from "react";
+import CartContext from "../store/cartContext";
+import Button from "./UI/Button";
+import { currencyFormatter } from "../util/currencyFormatter";
+
+export default function Product({ product }) {
+    const { addItem } = useContext(CartContext);
+    
+    const handleAddProductToCart = () => {
+        addItem(product);
+    }
+
     return (
-        <div className="meal-item">
+        <li className="meal-item">
             <article>
-                <img src="" alt="Product image" />
+                <img
+                    src={`http://localhost:3000/${product.image}`}
+                    alt="Product image"
+                />
                 <div>
-                    <h3>Prouct name</h3>
-                    <p className="meal-item-description">Description</p>
-                    <p className="meal-item-price">$200</p>
+                    <h3>{product.name}</h3>
+                    <p className="meal-item-description">
+                        {product.description}
+                    </p>
+                    <p className="meal-item-price">
+                        {currencyFormatter.format(product.price)}
+                    </p>
                 </div>
                 <p className="meal-item-actions">
-                    <button className="button">Add to cart</button>
+                    <Button onClick={handleAddProductToCart}>
+                        Add to cart
+                    </Button>
                 </p>
             </article>
-        </div>
+        </li>
     );
 }
