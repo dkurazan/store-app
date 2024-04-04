@@ -250,6 +250,18 @@ h1 {
   background-color: rgba(0, 0, 0, 0.55);
 }
 
+.center {
+  text-align: center;
+}
+
+.error {
+  padding: 10px 20px;
+  background-color: #da8484;
+  max-width: 30rem;
+  margin: 0 auto;
+  border-radius: 12px;
+}
+
 @keyframes fade-slide-up {
   from {
     opacity: 0;

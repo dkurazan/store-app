@@ -11,6 +11,7 @@ function App() {
             <CartCtxProvider>
                 <Header />
                 <AllProducts />
+                
                 <Cart />
                 <Checkout />
             </CartCtxProvider>

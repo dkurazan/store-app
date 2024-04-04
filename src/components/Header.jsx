@@ -13,14 +13,10 @@ export default function Header() {
         itemsQuantity += item.quantity;
     }
 
-    const handleOpenCart = () => {
-        showCart();
-    };
-
     return (
         <header id="main-header">
             <h1 id="title">FakeFood</h1>
-            <Button textOnly onClick={handleOpenCart}>
+            <Button textOnly onClick={showCart}>
                 Cart ({itemsQuantity})
             </Button>
         </header>

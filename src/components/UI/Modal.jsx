@@ -1,20 +1,20 @@
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import UserActionsCtx from "../../store/userActionsContext";
 
-export default function Modal({ children, className, open }) {
+export default function Modal({ children, className, open, onClose }) {
     const modalRef = useRef();
 
     useEffect(() => {
+        const modal = modalRef.current;
+
         if (open) {
-            modalRef.current.showModal();
-        } else {
-            modalRef.current.close();
+            modal.showModal();
         }
+        return () => modal.close();
     }, [open]);
 
     return createPortal(
-        <dialog className={`modal ${className}`} ref={modalRef}>
+        <dialog className={`modal ${className}`} ref={modalRef} onClose={onClose}>
             {children}
         </dialog>,
         document.getElementById("modal")

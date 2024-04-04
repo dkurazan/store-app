@@ -1,40 +1,39 @@
 import { createContext, useState } from "react";
 
 const UserActionsCtx = createContext({
-    action: null,
+    action: "",
     showCart: () => {},
     showCheckout: () => {},
     closeModal: () => {},
-})
+});
 
-export function UserActionsProvider({children}) {
+export function UserActionsProvider({ children }) {
     const [userAction, setUserAction] = useState(null);
 
     const handleShowCart = () => {
-        setUserAction('cart');
-    }
+        setUserAction("cart");
+    };
 
     const handleShowCheckout = () => {
-        setUserAction('checkout');
-    }
+        setUserAction("checkout");
+    };
 
     const handleCloseModal = () => {
-        setUserAction(null);
-    }
-    
+        setUserAction("");
+    };
 
     const userActionsCtx = {
         action: userAction,
         showCart: handleShowCart,
         showCheckout: handleShowCheckout,
-        closeModal: handleCloseModal
-    }
+        closeModal: handleCloseModal,
+    };
 
     return (
         <UserActionsCtx.Provider value={userActionsCtx}>
             {children}
         </UserActionsCtx.Provider>
-    )
+    );
 }
 
 export default UserActionsCtx;
